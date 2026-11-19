@@ -1,11 +1,83 @@
 {
-  "generated_at": "2026-11-19T03:52:16.411537Z",
+  "generated_at": "2026-11-19T04:13:25.428144Z",
   "status": "ok",
   "sources_ok": 13,
   "sources_total": 13,
-  "new_articles": 80,
+  "new_articles": 91,
   "errors": [],
   "articles": [
+    {
+      "id": "50feadb4ca12ac3587753c23",
+      "title": "Dow Jones Futures Rise: Anthropic IPO To Debut After Pricing High; Palo Alto And Everpure Rally On Earnings",
+      "url": "https://finance.yahoo.com/m/107e5a2c-4fba-3df3-b2fd-5d1160e65516/dow-jones-futures-rise%3A.html?.tsrc=rss",
+      "source": "Yahoo Finance / Acciones",
+      "category": "Mercados",
+      "published_at": "2026-11-19T03:59:36Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
+    },
+    {
+      "id": "78d13c5ed904460dac0c89de",
+      "title": "Peso tiene su peor caída intradía frente al dólar en 19 meses - El Economista",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNZWl4WDhmQnZzdVBhMy1GNm8yUEJqNWJyazhsQTJQMXBfUEdEMWZCUVJlU0ZZY1VBYXl6elA5NElKcEEtOUNPWWtzV2hzMk9wUXBvb1BuRlRDNVB6dFpkY0RsR0pnLVBGcFZXUkJBM08zbVI2RG1KX1dSeVZaMHVnTkNlSnhjazNLMTc2Z1dsMWRHTkNNZndYWVh3cHpSWFN2Uzc0RGJvYUtsaDZr0gGyAUFVX3lxTE1VQy1XT01PN1B2Z0V6NHcwdGZ1djByUXp0b002SHo4dEw5TzQ5eE5vUlZVRm14emJYRFloWnkwNEwycEdhcDBKTnZVV0FDMFNmNVJ5b3BuR1pXRElKYUxBRl96WUxMY2JfU0NjeHppMFNRaF8xU0xFMW5tWUlETk1QTXgwd2kzUTlWdzlORmF0WTFmS2NXRjRFaXBNRVQtcDd2Vk9RYjFrM0VWdHN0M1puMmc?oc=5",
+      "source": "El Economista",
+      "category": "México",
+      "published_at": "2026-11-19T03:56:40Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
+    },
+    {
+      "id": "cfca51b77a22e790bce0a3ee",
+      "title": "La BMV trasciende - El Economista",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNakRqRUJRLUtOU2E2OHNyS0F3cWM3YzA5WkNkQlRjd04yUjFTQlNjUzI1QkFuandud1RuRnpGTXNFOXRfTkhUal9JSGF2cEVyWGJoa0xJLWk1eTF2dUZWNkVjazBudlhGenBxd0pyVkhOT243LWI2c25LUDZxa3ZSbWl30gGHAUFVX3lxTE1JTnVFbFlkSmwxbl9YMlR1NzhFa19jLU9IWkpkdXNQajB4clBpbklhaGVvYi1MVmJERlY0SlUxYXdpejZsWjduWjdIa0FIbDBaUDlkdlJWN3pOajhNRXM0aG5XWDJCaV9ZemxsQmFHMi1RRWFWOGpEODJUd0Y5c1ZhTWs1aGwwSQ?oc=5",
+      "source": "El Economista",
+      "category": "México",
+      "published_at": "2026-11-19T03:54:08Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
+    },
+    {
+      "id": "40f00a6afffa083ec3c55f03",
+      "title": "Wall Street cerró mixto tras darse a conocer las minutas de la Fed - El Economista",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQQmZLODZ3SHp2c0FiTDB0RUtvVWRBNlBQS1VGcEpDcldNNjVvbDFaVEt2X0dYU0lxeDVUSXJKclVhWFJ4cFI2QVlFZHRqekJiYi1OQ1huNlppMV9icjBIaElQSFZuSjBFNE9iM1h5NEttdWFSNVVWZFJmZ2doV25jRDAycHY4SGs4TThyWXhOTHRrZmpvRXFfMy1GdXd5clJFUmptRXBRZ2J2dU5pQXU4TNIBtgFBVV95cUxPeHNFaG52dDNURVdEYUdCQUIxeTZmRy1qX3Y0dTBRMWVxUHA2YmQ5NlN1V3NjdVhxa2dPNEh1Z2Z3X2ZRT1VOemRuVGxkQm8yUDRyaGlzQlcxSV9vSUFidllPTC1vbHdJY29sdTBwTFZUZUFGS0dMWmdySDFsbkJhYnhBbzRzSFE4UUdsWnpZRGNGNjl2Sk1MWGt5eXBpMS02aUd1RWUwQl9qOVF2V29lWXBWQXlIUQ?oc=5",
+      "source": "El Economista",
+      "category": "México",
+      "published_at": "2026-11-19T03:51:58Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
+    },
+    {
+      "id": "a1df85704efbc103a7babecf",
+      "title": "Peter Thiel’s $85 Million Nvidia Exit Was a Bet the Stock Had Run Far Enough. After Nvidia’s Beat, It Closed Below Every Price He Could Have Sold At",
+      "url": "https://247wallst.com/investing/2026/11/18/peter-thiels-85-million-nvidia-exit-was-a-bet-the-stock-had-run-far-enough-after-nvidias-beat-it-closed-below-every-price-he-could-have-sold-at/?.tsrc=rss",
+      "source": "Yahoo Finance / Acciones",
+      "category": "Mercados",
+      "published_at": "2026-11-19T03:51:09Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
+    },
+    {
+      "id": "a4cfcc8eafc04465c02f0ab1",
+      "title": "Fiscal de Morelos presenta su Segundo Informe Semestral de Actividades - El Heraldo de México",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNdWVOVVAzRDVqbGdjbmswdWt4RjZhYkpjTVhTT2ZfdHEyNng2WTI0cnhzc1JuMnFqWEJuUGNVVVdJOS0wVWRKVFFKeHptZVhJX21LRV9QZTdqTmFNYUk0YXkydFFreDJLcW5xQjJKTmpxTXlxclNwUXhmLVJHdk8xX3JXVWFVRGFEVXpJTVhxaDB0VlUyTFA5ZFh4MXZZcEJ4clFRZWwyaE1YeG13cFVoZVJxckcycjFCbVJPc3ZBNVhWaUpMYmFpMjlkZHFEMVE?oc=5",
+      "source": "El Heraldo de México",
+      "category": "Política",
+      "published_at": "2026-11-19T03:50:59Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
+    },
+    {
+      "id": "419410359074742279df8d27",
+      "title": "Costco sees surge in panic buying after tech outages, report says",
+      "url": "https://www.cbsnews.com/news/costco-panic-buying-tech-outages-generators/?.tsrc=rss",
+      "source": "Yahoo Finance / Acciones",
+      "category": "Mercados",
+      "published_at": "2026-11-19T03:49:51Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
+    },
+    {
+      "id": "d88ff57d001e4229b2feece3",
+      "title": "Anthropic logró la mayor salida a Bolsa - El Economista",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQYVNQUzktYkpvNlFZVjRmNGwxYVRwa2FmbEE5c1dkQjlTUW5CT0Z5NlVYV2FfS1Nxd0I4SkhZVU5UUU83X2lLb3ZYbmg1RlhYNDdaY0FXT19GTU40eVdlcHl0ZXRwVEtDUUhmZ3NGSGQyeF8yLXcxTlFtUW9GN1JHemhVVGF5THY1eEdRM0ZJX2J5SEduYTh2cmxHU1TSAaIBQVVfeXFMTnBOUnhEclhBSmlaS0lJVHlnSEpEa1pIc0VFNEswZldKaGFFZS1SbDE5VFZUMFpYUHFCdk5WTnpkWUZ5RHpBODNWMHlWMTRxczd0V084WUdvQkphcWpPaWI3NEdHX0VZclQ1YUp5NG0zdU1yalpibGpDYWUxQV9GOXVDVGFhdk1MdW9FYlhUQTlPX0FlaGpnZDRtbURaRWdKQTB3?oc=5",
+      "source": "El Economista",
+      "category": "México",
+      "published_at": "2026-11-19T03:48:23Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
+    },
     {
       "id": "0b31b5905cb02d91b2159c60",
       "title": "My husband is happily retired at 64 and thinks I should keep working. Is he being fair?",
@@ -23,6 +95,15 @@
       "category": "Mercados",
       "published_at": "2026-11-19T03:45:00Z",
       "collected_at": "2026-11-19T03:50:44.601965Z"
+    },
+    {
+      "id": "01622581ec91a3b4d5d95bd9",
+      "title": "Dan Ives Says Nvidia’s AI Dominance Can Survive Without Jensen Huang: ‘Two, Three Years Ahead’ Of Rivals",
+      "url": "https://stocktwits.com/news-articles/markets/equity/dan-ives-nvidia-central-nervous-system-us-economy-jensen-huang-bullish-nvda-stock/cNbLvTwR9iX?.tsrc=rss",
+      "source": "Yahoo Finance / Acciones",
+      "category": "Mercados",
+      "published_at": "2026-11-19T03:39:56Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
     },
     {
       "id": "4f0ccdd92e1cdda3a7310b8e",
@@ -50,6 +131,15 @@
       "category": "Mercados",
       "published_at": "2026-11-19T03:30:00Z",
       "collected_at": "2026-11-19T03:50:44.601965Z"
+    },
+    {
+      "id": "e20ed1efd7d6f049817696c6",
+      "title": "Futuros de trigo en Chicago en mínimo desde enero - El Economista",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNaHF1ZHhaSzBJT2JGblQzQkVCZFJGZkZwcTlMdDMxVDJfVzBNYjM0YVkzeUZlWjd4UW4tcWhaQmstOUNuVjhwQ09hV2VGYzJuaE1RMEg5WWl6elBRVkZHLW56Z2dIaWJJQmVlaV9tS2Jxc1ljZmZPdzc2Sno5ZkdlNkgwMmJRdzAxcGp2NC1ZS2dxQlppampfSVkyajXSAaIBQVVfeXFMT19xRUhIcTdyV2JvS09IOHg5RWNReUF5c1lYOWE5NkVRMTJNdk94TlRnS0lNdXQ0LTNYeUdZV2ZkWmFOaEU2TDNCa1lMdWpZRGM4aGlPb18wMmZFWm9jOUk5eVd6MWc2WmJoX2JNR29MNFowUF9wTW9iMUdYbnUwYnIwME1Mb3M1bGV1bWxZVUJseGJlc0JLZkV5N3BmVEhldXRn?oc=5",
+      "source": "El Economista",
+      "category": "México",
+      "published_at": "2026-11-19T03:03:29Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
     },
     {
       "id": "5ef40a65c781696f0652502a",
@@ -149,6 +239,15 @@
       "category": "Estados Unidos",
       "published_at": "2026-11-19T02:10:00Z",
       "collected_at": "2026-11-19T03:50:44.601965Z"
+    },
+    {
+      "id": "4880ac379767e8fc5858786b",
+      "title": "‘Nothing Wrong With NVDA Or AI Trade’: Kenny Polcari Says Fed’s Inflation Concerns Are The Bigger Market Risk - Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQRmk3OExJZE10OUFFYjVVZjBZcF9CMEd0SkV6TEcxZzZUWjdFRUlrcjNKTlFkb1BBREFkMVdVNW4yVFpSYnl0VGFucG1iZjhkUlVEdm9CMTF5LVhjRENpX0RNZm1hRHhmTTJoTjloVktFbl9zdHhpYTdSeXBfTmR0RDBJUnQ1UGp4ZmRLVk5NWlNRX1FGN1FV?oc=5",
+      "source": "Yahoo Finance",
+      "category": "Estados Unidos",
+      "published_at": "2026-11-19T02:10:00Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
     },
     {
       "id": "a444c93b3864fced20a302c2",
@@ -1762,6 +1861,15 @@
       "collected_at": "2026-11-19T03:50:44.601965Z"
     },
     {
+      "id": "382215eed65855251a29b388",
+      "title": "Chinese steel imports remain a threat to Indian industry, Tata Steel CEO says - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPSU5xZ3hxUXIyT2tZR3ZHRi1NaG1TZDd1Q2EtRmwtM0hTT2Z6c1RObk9ldkhIUVlkZGJ6b015d243c2s4TnpXYzVydmlYYnl1WDkwcGViTmw4VDlhTl9yeWVOMjFoVUl1QVZ6NTRLXzgxOHNZMGJLdDRYMWQ5eXNyclg4dHRJOWxMV095SlE1cFRRT3RHX1BZMmdOelA0VWxHMUZVdnI4UzQ4Zlk5RHZkRWI1Wk96SXNjVmF3?oc=5",
+      "source": "Reuters",
+      "category": "Mercados",
+      "published_at": "2026-11-18T05:53:00Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
+    },
+    {
       "id": "454fc3279b2411bff0b1db35",
       "title": "Morning Bid: Jensen Huang's last hurrah, and a nervy future for Nvidia - Reuters",
       "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOUkhVeHlSOHlwY3dfOWVqSnVzNmhhcmtGWHk4SkdYQVlXSmxHdmtUVnBDMEpKbG5YQVpSVGJnbERVQUJPSElNbUh3Y3VTcURWQ2MyVlVKenZCRmtDVk9vcVlTSmJGbmdROVF6LUNORzd0UUI0TWo4M2JOSXFfRmlkZV9nYw?oc=5",
@@ -1823,6 +1931,15 @@
       "category": "Mercados",
       "published_at": "2026-11-18T04:35:00Z",
       "collected_at": "2026-11-19T03:50:44.601965Z"
+    },
+    {
+      "id": "434ccab3192cdfda328ff82f",
+      "title": "Australia frees largest LNG exporting state from reservation scheme - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNT1UyVkE3WVc0X0hXdm14QmJ6dzJ4WHFuY1Q0S2EzaUp1aHAwRTRjU1NOUU1SUkxTNWt4dFd3WWZwM1hqRDM5MUVQOFFoSzczSUdvMl9CcXppOE9aQTNMTVNqT1lfM1A4ZWlIUGkxRU9heWhhMmVPX1FkUjN5Z3MyRXl6dlRuSXVGRzBGcm9Ob3pLZHVNZEtxdWFjUlE1Ny1QVzFrU1dpd1pxQjNEX2s3RDVRYjk0Ni13R0haUTdkQ216TDkt?oc=5",
+      "source": "Reuters",
+      "category": "Mercados",
+      "published_at": "2026-11-18T04:32:00Z",
+      "collected_at": "2026-11-19T04:13:25.428144Z"
     },
     {
       "id": "ccbf5ba28f6fa40da7700f0e",
@@ -2587,123 +2704,6 @@
       "source": "CNBC / Politics",
       "category": "Política",
       "published_at": "2026-11-17T12:48:14Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "bf592496fd51d0dd5d965760",
-      "title": "Acciones de Deutsche Bank caen más de 6% tras noticias sobre pagos a Epstein y negocios con Rusia - El Economista",
-      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNY2I2TFNsbWVIQmNkdWR2MjB4SW1FaFlJcVA0bXI5a2VHTTFsdWVBdk1JMWFlNklFOU1tME9KR0ktNFJFX1E5RlZZazdHdFFNdTBtU0ZqSTZfdkhmSUdZSzh5dmFqOEl6Z3JreTNQWUl4RlR3aEpSeFV4S19ZYTRHTVRRcnlFTV9WV0ZMQUJYS01sdFQ1QkpydVZsdmlKS05tTVRsTWppYTNTeERUc3NEaFc2aE1Ddnk2X0lXb1N5RDJrejlzVk1BMF9PekFTbTBY0gHWAUFVX3lxTE9SN09qN0ViQllZZ2h3R2NzNzZyX3lUNXItdEVJUW5EMDBGdEJDM01WTk41elBveVNIYXJPYXR0TUZjMjVEaEo1MGlhbF9IVzN5aFZTWTdwSldUa0lXdTkyM1VrRWgzdG91MTJxZ2pqYUROSGxFVldmYjhtejA2bU9BRDRwTlFzLWpJSy1QeDVTbWFCdHA4MTIzU0t1azg5ZW1oNlVPazlNSTZKSnl0OW5LbnNMRUlPUFVtckNvYm53U0xjemxtaHZ4ekZGenFiUDUtMkFQUHc?oc=5",
-      "source": "El Economista",
-      "category": "México",
-      "published_at": "2026-11-17T12:13:10Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "a9acffc654114bd527559548",
-      "title": "COMMENTARY: Morning Bid: Chip wreck - Reuters",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQQmNFTVpRdjJEQ0FMbGZEWkZybUZQSHY1cG91MVZlZU0xY1RtRzFNLTc0U3Nnc3VhcXFnTHRGejY1Y3hrekczYTZXNkEzLVJWenhLbjIzUm81UWQwOXZ3NzlEYlBKeDFfNzVHRG5SSWhyMHBhd1RtMnZCeUtnLUZEOFN4UGVpQzdXN3ppNldnY01CaXFsbm40?oc=5",
-      "source": "Reuters",
-      "category": "Mercados",
-      "published_at": "2026-11-17T11:40:04Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "0bb5bf1cd03f4e4f7662c9b2",
-      "title": "Investors slashed tech exposure allocations by most since 2006 - Reuters",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9hUzk5NzA2a0JXelk4ZWhJcFpPT3Q2NWxVa3Bmdl9lUUhTaDZVQ0pFRTZ2WTRkVFRGQWNzenhrN2FaWkJzM0NBMTZEU3dLMHJTRHBWd21XSnhmcXQ2cmRHSWpBOUxwV2F0c2dGZENCZTBmekpuRXRzVkJxcw?oc=5",
-      "source": "Reuters",
-      "category": "Mercados",
-      "published_at": "2026-11-17T11:35:04Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "dbd80f052d6bcb1e32724666",
-      "title": "Iran escalates threats as third U.S. carrier arrives in Middle East, tanker struck in Hormuz",
-      "url": "https://www.cnbc.com/2026/11/17/iran-war-trump-hormuz-oil-.html",
-      "source": "CNBC / Politics",
-      "category": "Política",
-      "published_at": "2026-11-17T11:22:54Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "fa49644999356d8d2e97cb0f",
-      "title": "CoreWeave Answered the Biggest Question About AI Stocks. Now Nvidia Has to Confirm It. - Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNVzZjUENLaFJGZFYwYU55TVA2aHNUTUZtbm5WemlRT2lEa3ljTzA1NElvVXI1eDYtODR1MU9MQnVZUm9JOENvLU5DWm5Jb2FBbVBybFl6TmdsUzZtZkp1S0JRMThIZXU2WGlianR6blNJemJveWJkUmxsSjRqeGRBeHdJdkN2QUVNZ2w1SlNfamJFNEsweFVJeURLRUZydnh6UG13?oc=5",
-      "source": "Yahoo Finance",
-      "category": "Mercados",
-      "published_at": "2026-11-17T11:03:01Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "a5f01fd627ab24279c6061c5",
-      "title": "Gold struggles to rebound from one-year low as US dollar, yields advance - Reuters",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNVGd6c05RMXpCQzBvWjhLZlZ6cjc4OUZ0cjZaSWxzZk9leV9WbG1EVmhoVlJfTHZZRFkxZml4Rll3TXd6SGc0dmtiSHFsYkVQWThZdkpxb3dGQkhpSkgyVC1HQlV5WkZQaHU4N3B2b2RELWdDaGpZLWtmbHo2cllMNE9tN29pYnJGM1Z4eFJ6bmNQdHJFX0lNTHZtV0x4MlNhT284LThTc1hTY2xlcEEta0wwNjg?oc=5",
-      "source": "Reuters",
-      "category": "Mercados",
-      "published_at": "2026-11-17T10:43:57Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "659a2d85aa22cdfbc606a11e",
-      "title": "JD Vance says he'll decide 'sometime next year' about 2028 presidential run",
-      "url": "https://www.cnbc.com/2026/11/17/jd-vance-2028-presidential-run-decision.html",
-      "source": "CNBC / Politics",
-      "category": "Política",
-      "published_at": "2026-11-17T10:40:56Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "fb78f582dad299f026ad4088",
-      "title": "Euro zone economy seen growing moderately, France outlook weakest -Commission - Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNc2k3bXJscXRZNnlPa3VxNTREb3djN2dXWVhFS1hwQ1ZFUkU0OF9KWnlLdFRPNHF1VEpVRGd2cmhJTGFDTnd4QTN4R0pmWmRtTkV2S1JuUTlBUTNCMzZxVDk0cEJWMzE5TjBVaVJwaFpJdzZ3TmRuWUNxeHpwSTJvbTZ4d0hQY284dmk0QWtLM0ZaQ0x0aHRZV1NxbHdaTzAxSTV3QmdsaExSTlJwb002RmZEYU93Qlk2?oc=5",
-      "source": "Reuters",
-      "category": "Mercados",
-      "published_at": "2026-11-17T10:08:37Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "a4261dadb1700386ef00d52d",
-      "title": "Trump’s accounts traded up to $97.5 million in Nvidia as Huang gained White House access",
-      "url": "https://www.cnbc.com/2026/11/16/trump-nvidia-stock-trades-jensen-huang.html",
-      "source": "CNBC / Politics",
-      "category": "Política",
-      "published_at": "2026-11-17T10:08:32Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "b9a5de5a8d43325a48b4adde",
-      "title": "Precio del dólar en México hoy, martes 17 de noviembre de 2026: tipo de cambio USD a MXN, cuánto vale y cotización de Banxico - El Comercio Perú",
-      "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxQUzBTY2N2RVd4YlVrR09EMl9YX2g5RUV0ZlR5dFN1WmFteC1LSnBHTmxkVnU5Zm9MWTJFcHdHZlQyNGhCNEl3emN5VUFyWUZ1TDlpZWtiMXExUThJVjVNVFFuM0RFZ2JFU3lwTnJZTEtQT2pfOGdKTUpMQ3A5eG9CNjRMRTVHaHhicVU0RkZCTzE5Ti1YaGl3YlFrQUstWF83ZTAteGJqSmR6WEVlXzdQZmt2VktKbTdVVVY1X2NLLWFVUUlISFBEMHVXYUZfZV95bE4wTFdfRS13ZmZwSHdrRlQ2NTEzOTBRTFdfNWVNLV8zaWZwU1ZrZ2xHeTB6aFVZb2k1U2pDc3gwTFlhT1NMT2t4VQ?oc=5",
-      "source": "El Comercio Perú",
-      "category": "México",
-      "published_at": "2026-11-17T10:00:00Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "b8cc1d5c48100697446724cc",
-      "title": "U.S. companies from Nvidia to Apple face a growing China dilemma",
-      "url": "https://www.cnbc.com/2026/11/17/us-tech-firms-china-ties-political-pressure.html",
-      "source": "CNBC / Finance",
-      "category": "Mercados",
-      "published_at": "2026-11-17T08:52:45Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "04e18326e15dfe448ac736aa",
-      "title": "Treasury yields moderate as investors parse retail sales data - CNBC",
-      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE4xcWR1OGh2RVFmcDRsR1JtUDJUVFhqWFVjQ3R2V1ZjSFpqWmNtRXQweHFac0UxYllNRzJ2akQ0R2Q3dTFpTkhGeWFMS3d4MFNIX1pMWW5oUWxyQzh2bV8zcG91MlVCNm5kNlVXN3dmMG1pVWYycHFR0gF8QVVfeXFMTlpoUmZfei1Qbjl3OU9tR3A4MmlvbXNIR3FXa1JaRW5CMm5qQmgwcVBRMlFGa1BFc243bG5vR1hJVjBhYVJvMDVmNmstX2M3ME93cjZUbXc5dE5IWHJ5bndwRlJOLUNBTDBEY08tTUVMdG12c0VpemV3VUQtSw?oc=5",
-      "source": "CNBC",
-      "category": "Estados Unidos",
-      "published_at": "2026-11-17T08:23:51Z",
-      "collected_at": "2026-11-19T03:50:44.601965Z"
-    },
-    {
-      "id": "73d639075775c94b6074dd4a",
-      "title": "Déficit fiscal de México superaría 4% del PIB por sexto año consecutivo en 2027 - EL CEO",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOd2xlQzh1RHAxZjdtY05oMEhqcGVHcmNOLUg4QjJ6eXF0Z2N6S1hWWGxHSDZScGZueXlIZlRnN3FBVkJwbGFGeldIeDdGbGU5Tk9OMFNPZEh5di1QOGplMzdySUJtTnNiaGJjMW50MzV1eUk3akNGc2ZTWTl0YnRxa0ZXWW5GR01TSlpMN0VIZHZRY256NFRmVUVESQ?oc=5",
-      "source": "EL CEO",
-      "category": "Política",
-      "published_at": "2026-11-17T08:03:29Z",
       "collected_at": "2026-11-19T03:50:44.601965Z"
     }
   ]
