@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard Noticias</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f2f6fa; --panel: #fff; --sidebar: #0b192e; --side-text: #a6b8cf;
+    --ink: #132640; --muted: #4e627a; --line: #dbe5ee; --soft: #f4f8fb;
+    --accent: #006e65; --teal: #008f83; --mint: #dff6f1; --track: #e7eff5;
+    --warning: #774500; --warning-bg: #fff3d9; --error: #982139; --error-bg: #fff0f2;
+    --shadow: 0 2px 8px #13264008;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+  html[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #091322; --panel: #101e31; --sidebar: #070f1e; --side-text: #9eafc7;
+    --ink: #edf5ff; --muted: #a4b6cc; --line: #263951; --soft: #13243a;
+    --accent: #68e3d2; --teal: #42cdbb; --mint: #143d40; --track: #253750;
+    --warning: #ffdc95; --warning-bg: #382c18; --error: #ffb0bb; --error-bg: #3b222c;
+    --shadow: none;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-size: 14px; }
+  h1, h2, h3, p, dl, dd { margin: 0; }
+  h2 { font-size: 19px; letter-spacing: -.025em; }
+  [hidden] { display: none !important; }
+  button, input, select { font: inherit; }
+  button, input, select, a { outline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--teal); }
+  a { color: var(--accent); }
+  svg { flex: none; }
+  .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .symbols { position: absolute; width: 0; height: 0; }
+  .layout { min-height: 100vh; display: grid; grid-template-columns: 230px minmax(0, 1fr); }
+  .sidebar { position: sticky; top: 0; height: 100vh; background: var(--sidebar); color: white; display: flex; flex-direction: column; padding: 26px 16px 18px; }
+  .brand { display: flex; align-items: center; gap: 12px; padding: 0 8px 26px; font-weight: 730; letter-spacing: -.035em; font-size: 16px; }
+  .brand-mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 9px; color: #082a31; background: #6aebd8; }
+  .nav { display: grid; gap: 4px; padding-top: 18px; border-top: 1px solid #ffffff1c; }
+  .nav button { display: flex; align-items: center; text-align: left; gap: 11px; min-height: 43px; padding: 9px 11px; border: 1px solid transparent; border-radius: 8px; white-space: nowrap; color: var(--side-text); background: transparent; cursor: pointer; }
+  .nav button:hover { color: white; background: #ffffff10; }
+  .nav button[aria-current="true"] { color: #a3f6ea; background: #183747; border-color: #2c5260; font-weight: 650; }
+  .side-footer { margin-top: auto; display: flex; padding-top: 16px; }
+  .side-footer button { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 41px; background: #ffffff0c; border: 1px solid #ffffff24; border-radius: 8px; padding: 8px 11px; color: #dce9f7; cursor: pointer; white-space: nowrap; }
+  .side-footer button:hover { background: #ffffff20; }
+  .workspace { min-width: 0; }
+  .masthead { background: var(--panel); border-bottom: 1px solid var(--line); }
+  .topbar, .content { width: min(100%, 1510px); margin-inline: auto; padding-inline: clamp(20px, 3vw, 46px); }
+  .topbar { min-height: 65px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .collection { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 9px; color: var(--muted); font-size: 12px; }
+  .collection .icon { color: var(--accent); width: 16px; height: 16px; }
+  .collection time, .collection .value { font-weight: 650; color: var(--ink); }
+  .content { padding-block: 29px 52px; }
+  .heading { margin-bottom: 23px; }
+  h1 { font-size: clamp(30px, 4vw, 43px); line-height: 1.1; letter-spacing: -.055em; }
+  .heading p { margin-top: 8px; color: var(--muted); line-height: 1.5; }
+  .button { display: inline-flex; justify-content: center; align-items: center; gap: 8px; min-height: 40px; padding: 8px 13px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 650; white-space: nowrap; cursor: pointer; }
+  .button:not(:disabled):hover { border-color: var(--teal); color: var(--accent); }
+  .button:disabled { cursor: default; opacity: .58; }
+  .button.primary { color: var(--accent); background: var(--mint); border-color: transparent; }
+  .notice { margin-bottom: 18px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); line-height: 1.5; overflow-wrap: anywhere; }
+  .notice[data-tone="warning"] { color: var(--warning); background: var(--warning-bg); border-color: transparent; }
+  .notice[data-tone="error"] { color: var(--error); background: var(--error-bg); border-color: transparent; }
+  .notice ul { margin: 5px 0 0; padding-left: 21px; }
+  .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; margin-bottom: 17px; }
+  .metric, .panel { border: 1px solid var(--line); background: var(--panel); border-radius: 12px; box-shadow: var(--shadow); }
+  .metric { padding: 15px; }
+  .metric dt { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; font-weight: 650; line-height: 1.35; }
+  .metric dt .icon { color: var(--accent); width: 16px; height: 16px; }
+  .metric dd { margin-top: 7px; font-size: clamp(25px, 3vw, 34px); font-weight: 740; line-height: 1.15; letter-spacing: -.05em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+  .metric small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+  .overview { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr); gap: 15px; margin-bottom: 17px; }
+  .panel { padding: 18px; min-width: 0; }
+  .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .panel-head p { margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.4; }
+  .link-button { border: 0; padding: 5px 0; background: transparent; color: var(--accent); font-weight: 650; white-space: nowrap; cursor: pointer; }
+  .link-button:not(:disabled):hover { text-decoration: underline; }
+  .link-button:disabled { opacity: .55; cursor: default; }
+  .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 12px; }
+  .field { display: grid; gap: 5px; min-width: 0; }
+  .field > span:first-child { font-size: 12px; font-weight: 650; color: var(--muted); }
+  .field.search { grid-column: 1 / -1; }
+  .searchbox { position: relative; }
+  .searchbox .icon { position: absolute; top: 11px; left: 10px; color: var(--muted); pointer-events: none; }
+  .field input, .field select { min-width: 0; width: 100%; min-height: 40px; padding: 7px 9px; background: var(--soft); color: var(--ink); border: 1px solid var(--line); border-radius: 7px; }
+  .field input[type="search"] { padding-left: 35px; }
+  .field input::placeholder { color: var(--muted); }
+  .filter-error { color: var(--error); margin-top: 8px; font-size: 12px; }
+  .chart { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; max-height: 236px; overflow-y: auto; }
+  .chart li { display: grid; gap: 4px; }
+  .chart-label { display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+  .chart-label strong { color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .track { height: 7px; background: var(--track); border-radius: 9px; overflow: hidden; }
+  .bar { display: block; height: 100%; background: var(--teal); border-radius: inherit; }
+  .feed-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .article { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; min-width: 0; padding: 14px; background: var(--soft); border: 1px solid var(--line); border-radius: 9px; overflow-wrap: anywhere; }
+  .article:focus-within { border-color: var(--teal); }
+  .tag { max-width: 100%; display: inline-block; border-radius: 6px; padding: 3px 7px; color: var(--accent); background: var(--mint); font-size: 11px; font-weight: 700; }
+  .article h3 { font-size: 16px; line-height: 1.36; letter-spacing: -.018em; }
+  .article a { color: var(--ink); text-decoration: none; }
+  .article a:hover { color: var(--accent); text-decoration: underline; }
+  .article a .icon { width: 13px; height: 13px; margin-left: 5px; vertical-align: baseline; color: var(--accent); }
+  .article-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-top: auto; color: var(--muted); font-size: 12px; }
+  .empty { padding: 22px 18px; border: 1px dashed var(--line); border-radius: 9px; background: var(--soft); color: var(--muted); line-height: 1.55; overflow-wrap: anywhere; }
+  .empty strong { display: block; margin-bottom: 3px; color: var(--ink); }
+  .more { display: flex; justify-content: center; padding-top: 14px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  .skip-link { position: fixed; z-index: 2; top: 10px; left: 10px; background: var(--panel); padding: 8px; transform: translateY(-150%); }
+  .skip-link:focus { transform: none; }
+  @media (max-width: 960px) {
+    .layout { grid-template-columns: 183px minmax(0, 1fr); }
+    .sidebar { padding-inline: 12px; }
+    .overview { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 680px) {
+    .layout { display: block; }
+    .sidebar { position: static; height: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 11px 16px; }
+    .brand, .side-footer { padding: 0; margin: 0; }
+    .brand { font-size: 14px; gap: 7px; }
+    .brand-mark { width: 29px; height: 29px; }
+    .side-footer button { min-height: 36px; font-size: 12px; gap: 6px; }
+    .nav { grid-row: 2; grid-column: 1 / -1; display: flex; overflow-x: auto; padding-top: 8px; }
+    .nav button { min-height: 37px; font-size: 12px; }
+    .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .topbar, .content { padding-inline: 16px; }
+    .feed-grid { grid-template-columns: minmax(0, 1fr); }
+    .panel, .metric { padding: 13px; }
+  }
+</style>
+</head>
+<body>
+<svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-brand" viewBox="0 0 24 24"><path d="M3 18h18M5 14l5-5 4 3 5-6m-4 0h4v4"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 10-7 10S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><ellipse cx="12" cy="12" rx="3.5" ry="8"/><path d="M4 12h16"/></symbol>
+  <symbol id="i-politics" viewBox="0 0 24 24"><path d="M3 9h18l-9-5-9 5Zm0 11h18M6 12v5m6-5v5m6-5v5"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15A8 8 0 0 1 9 4a8.5 8.5 0 1 0 11 11Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19 11a7 7 0 0 0-12-4L4 10m0-5v5h5m-4 3a7 7 0 0 0 12 4l3-3m0 5v-5h-5"/></symbol>
+  <symbol id="i-news" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8m-8 3h8m-8 3h5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8m-4-4h8"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 5 5"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m-4-4 4 4 4-4M5 16v4h14v-4"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M13 5h6v6m0-6-8 8m-1-8H5v14h14v-5"/></symbol>
+</svg>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-brand"/></svg></span>Dashboard Noticias</div>
+    <nav class="nav" aria-label="Secciones de noticias">
+      <button type="button" data-category="" aria-current="true"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg>Vista general</button>
+      <button type="button" data-category="México"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>México</button>
+      <button type="button" data-category="Estados Unidos"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg>Estados Unidos</button>
+      <button type="button" data-category="Mercados"><svg class="icon" aria-hidden="true"><use href="#i-brand"/></svg>Mercados</button>
+      <button type="button" data-category="Política"><svg class="icon" aria-hidden="true"><use href="#i-politics"/></svg>Política</button>
+    </nav>
+    <div class="side-footer">
+      <button type="button" id="theme"><svg class="icon" aria-hidden="true"><use href="#i-moon" id="theme-icon"/></svg><span id="theme-text">Modo oscuro</span></button>
+    </div>
+  </aside>
+
+  <div class="workspace">
+    <header class="masthead">
+      <div class="topbar">
+        <div class="collection">
+          <svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>
+          <span>Última recopilación</span>
+          <time id="generated" hidden></time><span class="value" id="no-generated">—</span>
+        </div>
+        <button type="button" class="button primary" id="refresh">
+          <svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg><span id="refresh-text">Refresh</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="content" id="main" tabindex="-1">
+      <div class="heading">
+        <h1>Dashboard Noticias</h1>
+        <p>Noticias económicas, financieras y políticas.</p>
+      </div>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <noscript><p class="notice" data-tone="error">Activa JavaScript para cargar las noticias y usar los filtros.</p></noscript>
+
+      <dl class="metrics" aria-label="Indicadores de noticias">
+        <div class="metric"><dt><svg class="icon" aria-hidden="true"><use href="#i-news"/></svg>Titulares</dt><dd id="metric-count">—</dd><small>Resultados filtrados</small></div>
+        <div class="metric"><dt><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg>Medios</dt><dd id="metric-media">—</dd><small>En los resultados</small></div>
+        <div class="metric"><dt><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Nuevas noticias</dt><dd id="metric-new">—</dd><small>En la última recopilación</small></div>
+        <div class="metric"><dt><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg>Fuentes disponibles</dt><dd id="metric-sources">—</dd><small>Correctas / consultadas</small></div>
+      </dl>
+
+      <div class="overview">
+        <section class="panel" aria-labelledby="filters-heading">
+          <div class="panel-head">
+            <h2 id="filters-heading">Buscar y filtrar</h2>
+            <button class="link-button" type="button" id="clear" disabled>Limpiar filtros</button>
+          </div>
+          <div class="fields">
+            <label class="field search">
+              <span>Buscar titulares</span>
+              <span class="searchbox">
+                <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+                <input id="search" type="search" placeholder="Título, fuente o categoría" autocomplete="off">
+              </span>
+            </label>
+            <label class="field"><span>Categoría</span><select id="category"><option value="">Todas las categorías</option></select></label>
+            <label class="field"><span>Fuente</span><select id="source"><option value="">Todas las fuentes</option></select></label>
+            <label class="field"><span>Publicadas desde</span><input id="from" type="date" aria-describedby="date-error"></label>
+            <label class="field"><span>Publicadas hasta</span><input id="to" type="date" aria-describedby="date-error"></label>
+          </div>
+          <p id="date-error" class="filter-error" role="status" hidden>La fecha inicial debe ser anterior o igual a la fecha final.</p>
+        </section>
+
+        <section class="panel" aria-labelledby="chart-heading">
+          <div class="panel-head">
+            <div><h2 id="chart-heading">Distribución temática</h2><p>Titulares por categoría</p></div>
+          </div>
+          <ul class="chart" id="chart" aria-label="Titulares por categoría"></ul>
+          <p class="empty" id="chart-empty">Esperando los datos.</p>
+        </section>
+      </div>
+
+      <section class="panel" aria-labelledby="feed-heading">
+        <div class="panel-head">
+          <div><h2 id="feed-heading">Titulares</h2><p id="feed-count" role="status">Cargando noticias…</p></div>
+          <button class="button" type="button" id="export" disabled><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Exportar CSV</button>
+        </div>
+        <div class="feed-grid" id="feed"></div>
+        <div class="empty" id="empty" hidden></div>
+        <div class="more" id="more-wrap" hidden><button class="button" type="button" id="more" aria-controls="feed">Mostrar más titulares</button></div>
+        <span class="sr-only" id="export-status" role="status"></span>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+  'use strict';
+
+  const read = (id) => document.getElementById(id);
+  const ui = {
+    theme: read('theme'), refresh: read('refresh'), notice: read('notice'),
+    search: read('search'), category: read('category'), source: read('source'),
+    from: read('from'), to: read('to'), clear: read('clear'),
+    chart: read('chart'), chartEmpty: read('chart-empty'), feed: read('feed'),
+    empty: read('empty'), count: read('feed-count'), csv: read('export'),
+    more: read('more'), moreWrap: read('more-wrap')
+  };
+  const navigation = [...document.querySelectorAll('.nav [data-category]')];
+  const categories = navigation.map((button) => button.dataset.category).filter(Boolean);
+  const locale = 'es-MX';
+  const timeZone = 'America/Mexico_City';
+  const number = new Intl.NumberFormat(locale);
+  const percent = new Intl.NumberFormat(locale, {
+    style: 'percent', maximumFractionDigits: 1
+  });
+  const dateTime = new Intl.DateTimeFormat(locale, {
+    dateStyle: 'medium', timeStyle: 'short', timeZone
+  });
+  const calendar = new Intl.DateTimeFormat(locale, {
+    year: 'numeric', month: '2-digit', day: '2-digit', timeZone
+  });
+  const collator = new Intl.Collator(locale, { numeric: true });
+  const pageSize = 24;
+  const state = { snapshot: null, loading: false, readError: '', results: [], limit: pageSize };
+
+  function fold(value) {
+    return value.normalize('NFD').replace(/\p{M}/gu, '').toLocaleLowerCase(locale);
+  }
+
+  function nonempty(value, fallback = '') {
+    return typeof value === 'string' && value.trim() ? value.trim() : fallback;
+  }
+
+  function timestamp(value) {
+    if (typeof value !== 'string' || !value.trim()) return null;
+    const ms = Date.parse(value);
+    return Number.isFinite(ms) ? ms : null;
+  }
+
+  function calendarDay(value) {
+    if (value === null) return '';
+    const parts = Object.fromEntries(calendar.formatToParts(value).map(({ type, value }) => [type, value]));
+    return [parts.year, parts.month, parts.day].join('-');
+  }
+
+  function safeUrl(value) {
+    try {
+      const url = new URL(value);
+      return ['https:', 'http:'].includes(url.protocol) && !url.username && !url.password ? url.href : '';
+    } catch {
+      return '';
+    }
+  }
+
+  function counter(value) {
+    return Number.isSafeInteger(value) && value >= 0 ? value : null;
+  }
+
+  function normalizeArticle(raw) {
+    const category = nonempty(raw.category, 'Sin categoría');
+    const title = nonempty(raw.title, 'Titular sin título');
+    const source = nonempty(raw.source, 'Fuente sin identificar');
+    const published = timestamp(raw.published_at);
+    const collected = timestamp(raw.collected_at);
+
+    return {
+      title, source, category, published, collected, url: safeUrl(raw.url),
+      sourceKnown: Boolean(nonempty(raw.source)),
+      day: calendarDay(published),
+      searchable: fold([title, source, category].join(' '))
+    };
+  }
+
+  function parseSnapshot(data) {
+    if (!data || !Array.isArray(data.articles) ||
+        !['pending', 'ok', 'partial', 'error'].includes(data.status)) {
+      throw new Error('El archivo tiene un formato inesperado.');
+    }
+    const articles = data.articles
+      .filter((raw) => raw && typeof raw === 'object' && !Array.isArray(raw))
+      .map(normalizeArticle)
+      .sort((a, b) => (b.published ?? b.collected ?? -Infinity) - (a.published ?? a.collected ?? -Infinity));
+
+    return {
+      articles, status: data.status, generated: timestamp(data.generated_at),
+      sourcesOk: counter(data.sources_ok), sourcesTotal: counter(data.sources_total),
+      newArticles: counter(data.new_articles), skipped: data.articles.length - articles.length,
+      errors: Array.isArray(data.errors)
+        ? data.errors.filter((error) => typeof error === 'string' && error.trim())
+        : []
+    };
+  }
+
+  function node(tag, text, className) {
+    const element = document.createElement(tag);
+    if (text !== undefined) element.textContent = text;
+    if (className) element.className = className;
+    return element;
+  }
+
+  function icon(name) {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    const use = document.createElementNS(ns, 'use');
+    svg.setAttribute('class', 'icon');
+    svg.setAttribute('aria-hidden', 'true');
+    use.setAttribute('href', '#i-' + name);
+    svg.append(use);
+    return svg;
+  }
+
+  function renderTime(element, value) {
+    element.dateTime = new Date(value).toISOString();
+    element.textContent = dateTime.format(value) + ' (CDMX)';
+  }
+
+  function setOptions(select, values) {
+    const selected = select.value;
+    select.replaceChildren(select.options[0], ...values.map((value) => new Option(value, value)));
+    select.value = values.includes(selected) ? selected : '';
+  }
+
+  function refreshOptions() {
+    const articles = state.snapshot?.articles ?? [];
+    const extra = [...new Set(articles.map((article) => article.category))]
+      .filter((category) => !categories.includes(category)).sort(collator.compare);
+
+    setOptions(ui.category, [...categories, ...extra]);
+    setOptions(ui.source, [...new Set(articles.map((article) => article.source))].sort(collator.compare));
+  }
+
+  function renderNotice() {
+    const snapshot = state.snapshot;
+    const notices = [];
+    const errors = [];
+    let tone = 'info';
+
+    if (snapshot?.status === 'pending') notices.push('La recopilación de noticias está pendiente.');
+    if (snapshot?.status === 'partial') {
+      tone = 'warning';
+      notices.push('Recopilación parcial. Algunas fuentes presentan incidencias.');
+    }
+    if (snapshot?.status === 'error') {
+      tone = 'error';
+      notices.push('La última recopilación terminó con errores.');
+    }
+    if (snapshot?.status === 'partial' || snapshot?.status === 'error') errors.push(...snapshot.errors);
+    if (snapshot?.skipped) {
+      if (tone !== 'error') tone = 'warning';
+      notices.push('Registros con formato inválido omitidos: ' + number.format(snapshot.skipped) + '.');
+    }
+    if (state.readError) {
+      tone = 'error';
+      notices.unshift(state.readError + (snapshot ? ' Se conserva la última lectura disponible.' : ''));
+    }
+
+    ui.notice.hidden = notices.length === 0;
+    ui.notice.dataset.tone = tone;
+    ui.notice.replaceChildren(...notices.map((message) => node('p', message)));
+    if (errors.length) {
+      const list = node('ul');
+      list.append(...errors.map((error) => node('li', error)));
+      ui.notice.append(list);
+    }
+  }
+
+  function renderChart(results) {
+    const counts = new Map(categories.map((category) => [category, 0]));
+    for (const article of results) {
+      counts.set(article.category, (counts.get(article.category) ?? 0) + 1);
+    }
+
+    ui.chart.replaceChildren();
+    ui.chartEmpty.hidden = results.length > 0;
+    if (!results.length) {
+      ui.chartEmpty.textContent = state.loading && !state.snapshot
+        ? 'Esperando los datos.' : 'Sin titulares para calcular la distribución.';
+      return;
+    }
+
+    const rows = [...counts].sort(([a, aCount], [b, bCount]) =>
+      bCount - aCount || collator.compare(a, b));
+
+    for (const [category, count] of rows) {
+      const share = count / results.length;
+      const row = node('li');
+      const label = node('div', undefined, 'chart-label');
+      label.append(node('span', category), node('strong', number.format(count) + ' · ' + percent.format(share)));
+
+      const track = node('div', undefined, 'track');
+      track.setAttribute('aria-hidden', 'true');
+      const bar = node('span', undefined, 'bar');
+      bar.style.width = (share * 100) + '%';
+
+      track.append(bar);
+      row.append(label, track);
+      ui.chart.append(row);
+    }
+  }
+
+  function articleCard(article) {
+    const card = node('article', undefined, 'article');
+    const heading = node('h3');
+
+    if (article.url) {
+      const link = node('a', article.title);
+      link.href = article.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.append(icon('link'), node('span', ' (abre en otra pestaña)', 'sr-only'));
+      heading.append(link);
+    } else {
+      heading.textContent = article.title;
+    }
+
+    const metadata = node('p', undefined, 'article-meta');
+    metadata.append(node('strong', article.source));
+
+    if (article.published !== null) {
+      const time = node('time');
+      renderTime(time, article.published);
+      metadata.append(time);
+    } else if (article.collected !== null) {
+      const time = node('time');
+      renderTime(time, article.collected);
+      const collected = node('span', 'Recopilada el ');
+      collected.append(time);
+      metadata.append(collected);
+    } else {
+      metadata.append(node('span', 'Fecha sin registrar'));
+    }
+
+    card.append(node('span', article.category, 'tag'), heading, metadata);
+    return card;
+  }
+
+  function renderFeed(badDates) {
+    const results = state.results;
+    const shown = Math.min(state.limit, results.length);
+    ui.feed.replaceChildren(...results.slice(0, shown).map(articleCard));
+    read('feed-heading').textContent = ui.category.value ? 'Titulares de ' + ui.category.value : 'Titulares';
+    ui.moreWrap.hidden = shown >= results.length;
+    ui.csv.disabled = results.length === 0;
+    ui.empty.hidden = results.length > 0;
+    ui.empty.replaceChildren();
+
+    if (results.length) {
+      ui.count.textContent = shown === results.length
+        ? number.format(results.length) + (results.length === 1 ? ' titular' : ' titulares')
+        : number.format(shown) + ' de ' + number.format(results.length) + ' titulares';
+      return;
+    }
+    if (state.loading && !state.snapshot) {
+      ui.count.textContent = 'Cargando noticias…';
+      ui.empty.hidden = true;
+      return;
+    }
+
+    ui.count.textContent = 'Sin titulares para mostrar';
+    if (!state.snapshot) {
+      ui.empty.append(
+        node('strong', 'No se pudieron cargar las noticias.'),
+        node('p', 'Comprueba que index.html y noticias.json estén publicados juntos y pulsa Refresh.')
+      );
+    } else if (state.snapshot.articles.length === 0) {
+      ui.empty.append(
+        node('strong', 'Aún no se han recopilado noticias.'),
+        node('p', 'En GitHub, abre el repositorio y ve a Actions → Actualizar noticias y publicar dashboard → Run workflow → Run workflow. Cuando termine la publicación, pulsa Refresh.')
+      );
+    } else if (badDates) {
+      ui.empty.append(node('p', 'Corrige el intervalo de publicación para ver los titulares.'));
+    } else {
+      ui.empty.append(
+        node('strong', 'No hay coincidencias.'),
+        node('p', 'Cambia los criterios de búsqueda o usa Limpiar filtros.')
+      );
+    }
+  }
+
+  function render() {
+    const snapshot = state.snapshot;
+    const query = fold(ui.search.value.trim()).split(/\s+/).filter(Boolean);
+    const category = ui.category.value;
+    const source = ui.source.value;
+    const from = ui.from.value;
+    const to = ui.to.value;
+    const badDates = Boolean(from && to && from > to);
+
+    read('date-error').hidden = !badDates;
+    for (const input of [ui.from, ui.to]) input.setAttribute('aria-invalid', String(badDates));
+    ui.clear.disabled = !(ui.search.value || category || source || from || to);
+
+    for (const button of navigation) {
+      if (button.dataset.category === category) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    }
+
+    state.results = snapshot && !badDates ? snapshot.articles.filter((article) =>
+      (!category || article.category === category) &&
+      (!source || article.source === source) &&
+      (!(from || to) || (article.day && (!from || article.day >= from) && (!to || article.day <= to))) &&
+      query.every((term) => article.searchable.includes(term))
+    ) : [];
+
+    const results = state.results;
+    const media = new Set(results.filter((article) => article.sourceKnown).map((article) => article.source)).size;
+    read('metric-count').textContent = snapshot && !badDates ? number.format(results.length) : '—';
+    read('metric-media').textContent = snapshot && !badDates ? number.format(media) : '—';
+    read('metric-new').textContent = snapshot?.newArticles == null ? '—' : number.format(snapshot.newArticles);
+    read('metric-sources').textContent = snapshot?.sourcesOk == null || snapshot?.sourcesTotal == null
+      ? '—' : number.format(snapshot.sourcesOk) + ' / ' + number.format(snapshot.sourcesTotal);
+
+    const generated = read('generated');
+    generated.hidden = snapshot?.generated == null;
+    read('no-generated').hidden = !generated.hidden;
+    if (!generated.hidden) renderTime(generated, snapshot.generated);
+
+    renderNotice();
+    renderChart(results);
+    renderFeed(badDates);
+  }
+
+  function applyFilters() {
+    state.limit = pageSize;
+    render();
+  }
+
+  async function loadNews() {
+    if (state.loading) return;
+    state.loading = true;
+    state.readError = '';
+    ui.refresh.disabled = true;
+    read('refresh-text').textContent = 'Leyendo…';
+    render();
+
+    try {
+      const response = await fetch('./noticias.json?t='+Date.now(), {cache:'no-store'});
+      if (!response.ok) throw new Error('Respuesta HTTP ' + response.status + '.');
+
+      let data;
+      try {
+        data = await response.json();
+      } catch {
+        throw new Error('El archivo no contiene JSON válido.');
+      }
+
+      state.snapshot = parseSnapshot(data);
+      refreshOptions();
+    } catch (error) {
+      const detail = error instanceof TypeError ? 'Verifica la conexión y la ubicación del archivo.' : error.message;
+      state.readError = 'No se pudo leer noticias.json. ' + detail;
+    } finally {
+      state.loading = false;
+      ui.refresh.disabled = false;
+      read('refresh-text').textContent = 'Refresh';
+      applyFilters();
+    }
+  }
+
+  function csvCell(value) {
+    const text = String(value ?? '');
+    // Evita que una hoja de cálculo interprete texto externo como fórmula.
+    const safe = /^[\t\r\n]|^[\s\uFEFF]*[=+@-]/u.test(text) ? "'" + text : text;
+    return '"' + safe.replace(/"/g, '""') + '"';
+  }
+
+  function exportCsv() {
+    if (!state.results.length) return;
+
+    const iso = (value) => value === null ? '' : new Date(value).toISOString();
+    const rows = [
+      ['Título', 'Fuente', 'Categoría', 'Fecha de publicación (UTC)', 'Fecha de recopilación (UTC)', 'Enlace'],
+      ...state.results.map((article) => [
+        article.title, article.source, article.category, iso(article.published), iso(article.collected), article.url
+      ])
+    ];
+    const content = rows.map((row) => row.map(csvCell).join(',')).join('\r\n');
+    const url = URL.createObjectURL(new Blob(['\uFEFF', content, '\r\n'], { type: 'text/csv;charset=utf-8;' }));
+    const link = node('a');
+    link.href = url;
+    link.download = 'dashboard-noticias.csv';
+    link.hidden = true;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    read('export-status').textContent = 'CSV preparado con ' + number.format(state.results.length) + ' titulares.';
+  }
+
+  function storedTheme() {
+    try {
+      return localStorage.getItem('dashboard-noticias-theme');
+    } catch {
+      return null;
+    }
+  }
+
+  function setTheme(theme) {
+    const dark = theme === 'dark';
+    document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    read('theme-text').textContent = dark ? 'Modo claro' : 'Modo oscuro';
+    read('theme-icon').setAttribute('href', dark ? '#i-sun' : '#i-moon');
+  }
+
+  const savedTheme = storedTheme();
+  setTheme(savedTheme ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+
+  ui.theme.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    try {
+      localStorage.setItem('dashboard-noticias-theme', next);
+    } catch {
+      // El tema sigue disponible en la página si el navegador bloquea el almacenamiento.
+    }
+  });
+
+  ui.refresh.addEventListener('click', loadNews);
+  ui.csv.addEventListener('click', exportCsv);
+  ui.search.addEventListener('input', applyFilters);
+
+  for (const input of [ui.category, ui.source, ui.from, ui.to]) {
+    input.addEventListener('change', applyFilters);
+  }
+
+  for (const button of navigation) {
+    button.addEventListener('click', () => {
+      ui.category.value = button.dataset.category;
+      applyFilters();
+    });
+  }
+
+  ui.clear.addEventListener('click', () => {
+    for (const input of [ui.search, ui.category, ui.source, ui.from, ui.to]) input.value = '';
+    applyFilters();
+    ui.search.focus();
+  });
+
+  ui.more.addEventListener('click', () => {
+    const previousLimit = state.limit;
+    state.limit += pageSize;
+    renderFeed(false);
+    const firstNew = ui.feed.children[previousLimit];
+    if (firstNew) {
+      firstNew.tabIndex = -1;
+      firstNew.focus();
+    }
+  });
+
+  refreshOptions();
+  loadNews();
+</script>
+</body>
+</html>
